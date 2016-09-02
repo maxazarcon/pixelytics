@@ -27,6 +27,16 @@ The ID will look like `UA-XXXXXXX-X`.
 
 ## Changelog
 
+___v1.3.0___
+* Added Pixel Registration Tracking
+
+___
+
+___v1.2.4___
+* Fixed Pixel Lead Tracking
+
+___
+
 ___v1.2.2___
 * Added divider between options and enabler
 

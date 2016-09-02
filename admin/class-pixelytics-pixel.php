@@ -9,7 +9,7 @@
  */
 
 
-$pixel_id = get_option('pixel_id');
+$pixel_id = get_option( 'pixel_id' );
 ?>
 <!-- Facebook Pixel Code -->
 <script>
@@ -24,7 +24,9 @@ $pixel_id = get_option('pixel_id');
 
 	<?php 
 		if( checked( '1', get_option( 'pixel_lead_tracking' ), false ) )
-			echo("fbq('track', 'Lead');");
+			echo( "fbq('track', 'Lead');" );
+		if( checked( '1', get_option( 'pixel_reg_tracking' ), false ) )
+			echo( "fbq('track', 'CompleteRegistration');" );
 	?>
 	</script>
 	<noscript><img height="1" width="1" style="display:none"

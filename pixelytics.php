@@ -2,21 +2,22 @@
 /**
  *
  *
- * @link              http://maxazarcon.com/
- * @since             1.0.0
- * @package           pixelytics
+ * @link				http://sevenagesdesign.com/
+ * @since				1.0.0
+ * @package				pixelytics
  *
  * @wordpress-plugin
- * Plugin Name:       Pixelytics
- * Plugin URI:        https://github.com/soulexpression/pixelytics
- * Description:       Adds Google Analytics and Facebook Pixels to your WordPress website
- * Version:           1.2.4
- * Author:            Seven Ages Design
- * Author URI:        http://sevenagesdesign.com/
- * License:           GPL-3.0+
- * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain:       pixelytics
- * Domain Path:       /languages
+ * Plugin Name:			Pixelytics
+ * Plugin URI:			https://github.com/sevenagesdesign/pixelytics
+ * Description:			Adds Google Analytics and Facebook Pixels to your WordPress website
+ * Version:				1.3.0
+ * Stable tag:			4.6
+ * Author:				Seven Ages Design
+ * Author URI:			http://sevenagesdesign.com/
+ * License:				GPL-3.0+
+ * License URI:			http://www.gnu.org/licenses/gpl-3.0.txt
+ * Text Domain:			pixelytics
+ * Domain Path:			/languages
  */
 
 if (!defined('WP_CONTENT_URL'))
@@ -80,13 +81,13 @@ function pixelytics_update() {
      * @package pixelytics
      */
 
-	require_once ('admin/class-pixelytics-update.php');
-	$pixelytics_current_version = '1.2.4';
+	require_once( 'admin/class-pixelytics-update.php' );
+	$pixelytics_current_version = '1.3.0';
 	$pixelytics_remote_path = 'http://www.sevenagesdesign.com/plugins/pixelytics/update.php';
 	$pixelytics_slug = plugin_basename( __FILE__ );
-	new wp_auto_update ($pixelytics_current_version, $pixelytics_remote_path, $pixelytics_slug);
+	new wp_auto_update( $pixelytics_current_version, $pixelytics_remote_path, $pixelytics_slug );
 }
-add_action('init', 'pixelytics_update');
+add_action( 'init', 'pixelytics_update' );
 
 /**
  * Adds Google Analytics to the head of the page
@@ -106,16 +107,16 @@ function pixelytics_pixel() {
 	include plugin_dir_path( __FILE__ ) . 'admin/class-pixelytics-pixel.php';
 }
 
-register_activation_hook(__FILE__, 'activate_pixelytics');
-register_deactivation_hook(__FILE__, 'deactive_pixelytics');
+register_activation_hook( __FILE__, 'activate_pixelytics' );
+register_deactivation_hook( __FILE__, 'deactive_pixelytics' );
 
 /**
  * Load stylesheets, etc
  */
 
 function style_pixelytics() {
-	wp_enqueue_style( 'pixelytics_style', plugins_url('css/style.css', __FILE__ ) );
-	wp_enqueue_script( 'pixelytics_js', plugins_url('js/pixelytics.js', __FILE__ ) );
+	wp_enqueue_style( 'pixelytics_style', plugins_url( 'css/style.css', __FILE__ ) );
+	wp_enqueue_script( 'pixelytics_js', plugins_url( 'js/pixelytics.js', __FILE__ ) );
 }
 
 /**
@@ -130,13 +131,13 @@ function save_alert() {
     <?php
 }
 
-if (is_admin()) {
+if ( is_admin() ) {
 	add_action( 'admin_init', 'admin_init_pixelytics' );
 	add_action( 'admin_menu', 'admin_menu_pixelytics' );
 	add_action( 'admin_enqueue_scripts', 'style_pixelytics' );
 }
 
-if (!is_admin()) {
+if ( !is_admin() ) {
 	if( checked( '1', get_option( 'analytics_activate' ), false ) ){
 		add_action( 'wp_head', 'pixelytics_analytics' );
 	}
